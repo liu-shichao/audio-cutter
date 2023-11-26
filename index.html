@@ -7,76 +7,24 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="./enable-threads.js"></script>
     <script src="./assets/ffmpeg.min.js"></script>
-    <script src="./assets/frontend.js"></script>
+    <script type="module" src="./assets/frontend.js"></script>
     <script src="./assets/wavesurfer.min.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/element-ui@2.15.5/lib/index.js"></script>
-
 </head>
 
 <body>
-    <div class="container">
-        <div class="operate">
-            选择原始视频文件:
-            <input type="file" id="select_origin_file">
-            <button id="start_clip">开始剪辑视频</button>
-            <div class="slider-container">
-                <div id="app">
-                    <template>
-                        <div class="block">
-                            <el-slider v-model="value" range :format-tooltip="formatTooltip" :max="maxSliderValue">
-                            </el-slider>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </div>
-        <div class="video-container">
-            <div class="label">原视频</div>
-            <video class="my-video" id="origin-video" controls></video>
-        </div>
-        <div class="video-container">
-            <div class="label">处理后的视频</div>
-            <video class="my-video" id="handle-video" controls></video>
-        </div>
-    </div>
     <div id="waveform" class="waveform"></div>
-    <a href="javascript:" id="btnPlay" role="button">播放</a>
-    <a href="javascript:" id="btnPause" role="button">暂停</a>
+    <input type="file" id="select_origin_file">
+    <a href="javascript:" id="btnCut" role="button">剪切</a>
 </body>
 <style>
-    @import url("https://cdn.jsdelivr.net/npm/element-ui@2.15.5/lib/theme-chalk/index.css");
-
     body {
         margin: 0;
         padding: 0;
     }
-
-    .my-video {
-        width: 600px;
-        height: 400px;
-    }
-    .slider-container {
-        padding: 0 16px;
-    }
 </style>
 <script>
-    // import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js'
-    var wavesurfer = WaveSurfer.create({
-        container: '#waveform'
-    });
-    wavesurfer.load('dou.wav');
-    wavesurfer.on('seeking', function (currentTime) {
-        console.log('Seeking', currentTime + 's')
-    });
-    // 播放和暂停
-    btnPlay.addEventListener('click', function () {
-        wavesurfer.play();
-    });
-    btnPause.addEventListener('click', function () {
-        wavesurfer.pause();
-    });
 </script>
 
 </html>

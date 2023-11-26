@@ -70,17 +70,22 @@ class ClipVideo {
         btnCut.addEventListener('click',  async () => {
             const regions = this.wsRegions.getRegions();
             console.log(regions);
+            btnCut.disabled = true;
             for (var i = 0; i < regions.length; i ++) {
                 await this.clipAudio(this.originFile, regions[i].start, regions[i].end, i)
             }
         });
+        btnCut.disabled = true;
     }
     bindSelectOriginFile() {
         $('#select_origin_file').on('change', (e) => {
+
             const file = e.target.files[0]
             this.originFile = file
             const url = window.webkitURL.createObjectURL(file)
             this.wavesurfer.load(url);
+            document.getElementById('select_origin_file').disabled = true;
+            btnCut.disabled = false;
         })
     }
     async clipAudio(file, start, end, idx) {

@@ -1,5 +1,5 @@
 ### 说明
-1. docs中是这个项目的源码
+1. docs 中是这个项目的源码
 2. 使用页面：https://liu-shichao.github.io/audio-cutter/
 3. 目前配置支支持 WAV 格式声音裁剪
 
